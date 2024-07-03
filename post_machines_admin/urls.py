@@ -20,7 +20,7 @@ from django.urls import path, include
 import user.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),# за замовченням навіщо це?
     path('user/', user.views.user_page), # user посилається на user.views.user_page)
     path('parcel/', include('parcel.urls')), # parsel посилається на include('parcel.urls')... треба включити усі
 # штук,які є в 'parcel.urls'

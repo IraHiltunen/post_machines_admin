@@ -4,10 +4,10 @@ from django.shortcuts import render
 # Create your views here.
 def parcels_view(request):
     #return render(request, 'parcel.html')
-    return HttpResponse("hi, beauty parcels")
+    return HttpResponse("hi, parcels")
 
 
 def one_parcel_view(request, parcel_id):
     #return render(request, 'one_parcel.html')
-    return HttpResponse("hi, beauty one parcels")
+    return HttpResponse("hi,  one parcels")
 

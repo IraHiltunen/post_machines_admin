@@ -3,5 +3,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
+
 def user_page(request):
-    HttpResponse("hello ira user page")
+    # return render(request, 'user_page.html')
+    return HttpResponse("hello ira user page")
