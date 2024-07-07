@@ -6,5 +6,5 @@ urlpatterns = [
     path('', post_machine.views.post_machine_view), # посилається на post_machine/views.py і буде її виконувати
     path('<int:post_machine_id>', post_machine.views.one_post_machine_view), # посилається на post_machine/views.py
     # і буде її виконувати
-    path('<int:post_machine_id>/<int:box_id>', post_machine.views.box_one_post_machine_view)
+    path('<int:post_machine_id>/<int:locker_id>', post_machine.views.locker_one_post_machine_view)
 ]
