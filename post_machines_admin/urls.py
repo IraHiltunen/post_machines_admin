@@ -22,6 +22,10 @@ import user.views
 urlpatterns = [
     path('admin/', admin.site.urls),# за замовченням
     path('user/', user.views.user_page), # user посилається на user.views.user_page)
+    path('login/', user.views.login_view),
+    path('logout/', user.views.logout_view),
+    path('register/', user.views.register_view),
+
     path('parcel/', include('parcel.urls')), # parsel посилається на include('parcel.urls')... треба включити усі
 # штук,які є в 'parcel.urls'
     path('post_machine/', include('post_machine.urls'))

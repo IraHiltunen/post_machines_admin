@@ -16,3 +16,9 @@ class Parcel(models.Model):
     open_datetime = models.DateTimeField("date published")
     update_datetime = models.DateTimeField("date published", default=datetime.now)
     status = models.BooleanField(default=False)
+
+    def __repr__(self):  # один з цих треба для відображення адекватного
+        pass
+
+    def __str__(self):
+        pass
