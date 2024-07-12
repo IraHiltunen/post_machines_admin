@@ -17,8 +17,9 @@ class Parcel(models.Model):
     update_datetime = models.DateTimeField("date published", default=datetime.now)
     status = models.BooleanField(default=False)
 
-    def __repr__(self):  # один з цих треба для відображення адекватного
-        pass
-
+# один з цих треба для відображення адекватного
     def __str__(self):
-        pass
+        return f"{self.address} {self.city}"
+
+    def __repr__(self):
+        return f"{self.address} {self.city}"

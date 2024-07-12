@@ -4,18 +4,21 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
+from user.forms import LoginForm, RegisterForm
+
 
 def login_view(request):
     context = {}
     if request.method == 'POST':
-        username = request.POST['login']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('/user/')
-        else:
-            context['error'] = "invalid username or password"
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user = authenticate(username=form.cleaned_data['username'],
+                                password=form.cleaned_data['password'])
+            if user is not None:
+                login(request, user)
+                return redirect('/user/')
+        context['error'] = "invalid username or password"
+    context['form'] = LoginForm()
     return render(request, 'login.html', context=context)
 
 
@@ -26,21 +29,22 @@ def logout_view(request):
 
 def register_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        email = request.POST['email']
-        first_name = request.POST['fname']
-        last_name = request.POST['lname']
-        user = User.objects.create_user(username=username, email=email, password=password,
-                                        first_name=first_name, last_name=last_name)
-        user.save()
-        return redirect('/login/')
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(username=form.cleaned_data['username'],
+                                            email=form.cleaned_data['email'],
+                                            password=form.cleaned_data['password'],
+                                            first_name=form.cleaned_data['first_name'],
+                                            last_name=form.cleaned_data['last_name'])
+            user.save()
+            return redirect('/login/')
     else:
-        return render(request, 'register.html')  # якщо context нема, то можна не писати його
+        return render(request, 'register.html',
+                      context={'form': RegisterForm()})  # якщо context нема, то можна не писати його
 
 
 @login_required
 def user_page(request):
-    return render(request, 'user_page.html', context={'username': request.user.username,
-                                                      'email': request.user.email})
-    return HttpResponse("hello ira user page")
+    return render(request, 'user_page.html',
+                  context={'username': request.user.username,
+                           'email': request.user.email})
