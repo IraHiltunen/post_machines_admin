@@ -33,7 +33,7 @@ def locker_one_post_machine_view(request, post_machine_id, locker_id):  # todo c
     #one_postmachine = models.PostMachine.objects.get(id=post_machine_id)
     one_locker = models.Locker.objects.get(id=locker_id) # можливо (pk=1)
     return render(request, 'locker.html', context={'one_locker': one_locker,
-                  'post_machine_id': lockers})
+                  'post_machine_id': post_machine_id})
 
 
     #return HttpResponse(f'locker is {one_locker.status}')# статус комірки вивести
