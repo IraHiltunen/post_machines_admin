@@ -3,7 +3,7 @@ from django.shortcuts import render
 from post_machine import models
 
 
-def post_machine_view(request): # перевірити context
+def post_machine_view(request):
     post_machines = models.PostMachine.objects.all()
     return render(request, 'post_machines.html',
                   context={'post_machines': post_machines})
@@ -21,7 +21,6 @@ def one_post_machine_view(request, post_machine_id): # це def locker_view(requ
     return render(request, 'one_post_machine.html',
                   context={'one_postmachine': one_postmachine,
                            'post_machine_lockers': post_machine_lockers})
-
 
 
     #one_locker = models.Locker.objects.get(pk=5)

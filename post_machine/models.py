@@ -22,3 +22,10 @@ class Locker(models.Model):
     post_machine = models.ForeignKey(PostMachine, on_delete=models.CASCADE)
     status = models.BooleanField(default=False)
 
+
+    def __str__(self):
+        return f"{self.size} {self.status} {self.post_machine}"
+
+
+    def __repr__(self):
+        return f"{self.size} {self.status} {self.post_machine}"
