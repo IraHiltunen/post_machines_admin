@@ -3,9 +3,27 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.views import View
 
 from user.forms import LoginForm, RegisterForm
 
+
+# class LoginView(View):
+
+
+#     def get(self, request):
+#         return render(request, "login.html")
+#
+#     def post(self, request):
+#         username = request['username']
+#         password = request['password']
+#         user = authenticate(request, username=username, password=password)
+#         if user is None:
+#             context['error'] = "invalid username or password"
+#             return render(request, 'login.html', context=context)
+#         else:
+#             login(request, user)
+#             return redirect('/user/')
 
 def login_view(request):
     context = {}

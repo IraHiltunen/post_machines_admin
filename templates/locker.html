@@ -5,10 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-{% for one_locker in post_machine %}
-    <a href="/post_machine/{{ post_machine_id }}/one_locker/{{ one_locker.pk }}/" > Locker {{ one_locker.pk }}</a> <!--посилання на посилку конкретну-->
+Post machine: {{ one_postmachine.city }} {{ one_postmachine.address }} <br>
+Lockers: 
+<br>
+<br>
+{% for one_locker in lockers %}
+    <a href="/post_machine/{{ one_post_machine }}/{{ one_locker.pk }}/" > Locker {{ one_locker.pk }}</a> <!--посилання на посилку конкретну-->
+    <br>
     size: {{ one_locker.size }} <br>
-    status: {{ one_locker.status }} <br>
+    status: 
+    {% if one_locker.status == True %}
+        locker is free
+    {% else %}
+        locker is not available
+    {% endif %}
     
     <br>
     _____________

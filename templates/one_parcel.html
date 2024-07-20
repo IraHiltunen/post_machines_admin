@@ -6,5 +6,27 @@
 </head>
 <body>
 your parcel: {{ parcel.post_machine_recipient.city }} {{ parcel.post_machine_recipient.address }} <br>
+size: {{ parcel.size }}
+
+<br>
+status:
+{% if parcel.status == False %}
+not received yet
+{% else %}
+received {{ parcel.open_datetime }}
+{% endif %}
+
+<br>
+<br>
+
+{% if parcel.locker is not None and parcel.status == False %}
+<form action="/parcel/get_parcel/" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="parcel_id" id="parcel_id" value="{{ parcel.pk }}">
+
+    <input type="submit" value="Get parcel">
+</form>
+{% endif %}
+
 </body>
 </html>
