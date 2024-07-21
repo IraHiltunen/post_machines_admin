@@ -5,27 +5,28 @@
     <title>Title</title>
 </head>
 <body>
+
+<br>
+<br>
+Available post machines:<br>
 {% for post_machine in post_machines %}
     <a href="/post_machine/{{ post_machine.pk }}/" > Post_machine {{ post_machine.pk }}</a> <!--посилання на поштомат конкретну-->
     <br>
-    
-    <select onchange="window.location.href=this.value">
-        <option value="#">Select a city</option>
-        {% for city in cities %}
-            <option value="/post_machine/{{ post_machine.pk }}/city/{{ post_machine.city }}/">{{ post_machine.city }}</option>
-        {% endfor %}
-    </select>
     <br>
     address: {{ post_machine.address }} <br>
-    
-{#    city: {{ post_machine.city }} <br>#}
+    city: {{ post_machine.city }} <br>
 {#    <a href="/post_machine/{{ post_machine.pk }}/locker/{{ post_machine_lockers.pk }}/" > lockers of this pm </a> <!--посилання на комірки-->#}
 
-    <br>
-    <br>
-    <br>
     _____________
     <br>
 {% endfor %}
+Choose post machine by city:<br>
+<select onchange="window.location.href=this.value">
+    <option value="#">Select a city</option>
+    {% for city in post_machines.cities %}
+{#        <option value="/post_machine/city/{{ city }}/">{{ city }}</option>#}
+{#        <option value="/post_machine/{{ post_machines.pk }}/city/{{ post_machines.city }}/">{{ post_machines.city }}</option>#}
+    {% endfor %}
+</select>
 </body>
 </html>

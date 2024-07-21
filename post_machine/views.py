@@ -7,6 +7,7 @@ def post_machine_view(request):
     post_machines = models.PostMachine.objects.all()
     return render(request, 'post_machines.html',
                   context={'post_machines': post_machines})
+                           #'post_machine': post_machine})
     #return HttpResponse("hi, post_machine")
 
 

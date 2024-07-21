@@ -10,7 +10,6 @@ from user.forms import LoginForm, RegisterForm
 
 # class LoginView(View):
 
-
 #     def get(self, request):
 #         return render(request, "login.html")
 #
