@@ -14,6 +14,6 @@ services:
       ports:
         - 5432:5432
       environment:
-        - POSTGRES_PASSWORD+S3cret
+        - POSTGRES_PASSWORD=S3cret
         - POSTGRESS_USER=citizix_user
       hostname: pg_db
