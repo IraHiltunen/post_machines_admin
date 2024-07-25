@@ -9,6 +9,7 @@ Post_machine: {{ one_postmachine.address }} {{ one_postmachine.city }} <br>
 <br>
 <!--можливо ну його цей фор, просто постмашин адресу та місто і все-->
 {#{% for post_machine_lockers in one_postmachine %}#}
+{#{% for locker in post_machine_lockers %}#}
 {#    <a href="/post_machine/{{ one_postmachine.pk }}/{{ one_locker.pk }}/" > lockers of this pm </a> <!--посилання на комірки-->#}
 {#    size: {{ post_machine_lockers.size }}<br>#}
 {#    status: {{ post_machine_lockers.status }}<br>#}

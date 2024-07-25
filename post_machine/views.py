@@ -11,7 +11,7 @@ def post_machine_view(request):
     #return HttpResponse("hi, post_machine")
 
 
-def one_post_machine_view(request, post_machine_id): # це def locker_view(request, machine_id):
+def one_post_machine_view(request, post_machine_id):  # це def locker_view(request, machine_id):
     one_postmachine = models.PostMachine.objects.get(id=post_machine_id)
     post_machine_lockers = models.Locker.objects.filter(post_machine=one_postmachine)
 
@@ -22,6 +22,7 @@ def one_post_machine_view(request, post_machine_id): # це def locker_view(requ
     return render(request, 'one_post_machine.html',
                   context={'one_postmachine': one_postmachine,
                            'post_machine_lockers': post_machine_lockers})
+                          # 'locker': locker}) не знаю треба чи ні, бо locker є в темплейті
 
 
     #one_locker = models.Locker.objects.get(pk=5)
