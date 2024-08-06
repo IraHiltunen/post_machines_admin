@@ -5,7 +5,7 @@ services:
         - 8000:8000
       environment:
         - DB_HOST=pg_db
-        - DB_USER=citizix_user
+        - DB_USER=postgres
         - DB_PASSWORD=S3cret
 
 
@@ -15,5 +15,4 @@ services:
         - 5432:5432
       environment:
         - POSTGRES_PASSWORD=S3cret
-        - POSTGRES_USER=citizix_user
       hostname: pg_db

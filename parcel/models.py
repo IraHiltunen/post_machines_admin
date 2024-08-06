@@ -41,15 +41,15 @@ class Parcel(models.Model):
     def __repr__(self):
         return f"{self.pk} {self.sender} - {self.recipient}"
 
-
-@receiver(post_save, sender=Parcel)  # Connect to the built-in post_save signal
-def update_status_on_parcel_put_to_locker(sender, instance, created, **kwargs):
-    # This function will be called automatically after Order model instance is saved
-
-    print(instance)
-    if instance.status == False:
-        if instance.locker is not None:
-            parcel_locker = Locker.objects.get(pk=instance.locker.pk)
-            parcel_locker.status = False
-            parcel_locker.save()
-            logger.info(f"updated locker status for parcel {instance}")
+# це сигнал.потім його треба розкоментувати
+# @receiver(post_save, sender=Parcel)  # Connect to the built-in post_save signal
+# def update_status_on_parcel_put_to_locker(sender, instance, created, **kwargs):
+#     # This function will be called automatically after Order model instance is saved
+#
+#     print(instance)
+#     if instance.status == False:
+#         if instance.locker is not None:
+#             parcel_locker = Locker.objects.get(pk=instance.locker.pk)
+#             parcel_locker.status = False
+#             parcel_locker.save()
+#             logger.info(f"updated locker status for parcel {instance}")
